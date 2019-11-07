@@ -2,28 +2,47 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+import json from 'rollup-plugin-json';
 
 const entrypoint = 'main';
 const outputDir = 'dist';
+const name = 'geojson-cleaner';
 
-export default {
-  input: `src/${entrypoint}.js`,
-  output: [
-    { file: `${outputDir}/${entrypoint}.js`, format: 'iife' },
-    { file: `${outputDir}/${entrypoint}.min.js`, format: 'iife' },
-  ],
-  plugins: [
-    resolve(),
-    commonjs(),
-    babel({
-      configFile: false,
-      exclude: 'node_modules/**',
-      presets: [
-        ['@babel/preset-env', { modules: false }],
-      ],
-    }),
-    terser({
-      include: [/^.+\.min\.js$/, '*esm*'], 
-    }),
-  ],
-};
+const basePlugins = [
+  resolve(),
+  commonjs(),
+  json(),
+  babel({
+    configFile: false,
+    exclude: 'node_modules/**',
+    presets: [
+      ['@babel/preset-env', { modules: false }],
+    ],
+  }),
+];
+
+export default [
+  {
+    input: `src/${entrypoint}.js`,
+    output: [
+      { file: `${outputDir}/${name}.js`, format: 'iife' },
+      { file: `${outputDir}/${name}.min.js`, format: 'iife' },
+    ],
+    plugins: [
+      ...basePlugins,
+      terser({
+        include: [/^.+\.min\.js$/, '*esm*'], 
+      }),
+    ],
+  },
+  {
+    input: 'src/cli.js',
+    output: [
+      { file: `${outputDir}/cli/${name}.js`, format: 'cjs' },
+    ],
+    plugins: [
+      ...basePlugins,
+    ],
+    external: [ 'fs', 'util' ],
+  },
+];
