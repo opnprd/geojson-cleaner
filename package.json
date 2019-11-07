@@ -13,5 +13,8 @@
   "scripts": {
     "bundle": "rollup --config rollup.config.js",
     "test": "jest"
+  },
+  "dependencies": {
+    "proj4": "^2.5.0"
   }
 }
