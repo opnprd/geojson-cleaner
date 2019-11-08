@@ -19,6 +19,9 @@
   "bin": {
     "geojson-cleaner": "bin/cli.js"
   },
+  "files": [
+    "dist/cli/index.js"
+  ],
   "directories": {
     "test": "test"
   },
