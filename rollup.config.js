@@ -12,13 +12,6 @@ const basePlugins = [
   resolve(),
   commonjs(),
   json(),
-  babel({
-    configFile: false,
-    exclude: 'node_modules/**',
-    presets: [
-      ['@babel/preset-env', { modules: false }],
-    ],
-  }),
 ];
 
 export default [
@@ -30,6 +23,15 @@ export default [
     ],
     plugins: [
       ...basePlugins,
+      babel({
+        configFile: false,
+        exclude: 'node_modules/**',
+        presets: [
+          ['@babel/preset-env', {
+            modules: false,
+          }],
+        ],
+      }),
       terser({
         include: [/^.+\.min\.js$/, '*esm*'], 
       }),
@@ -38,11 +40,23 @@ export default [
   {
     input: 'src/cli.js',
     output: [
-      { file: `${outputDir}/cli/${name}.js`, format: 'cjs' },
+      { file: `${outputDir}/cli/index.js`, format: 'cjs' },
     ],
     plugins: [
       ...basePlugins,
+      babel({
+        configFile: false,
+        exclude: 'node_modules/**',
+        presets: [
+          [ '@babel/preset-env', {
+            modules: false,
+            targets: {
+              node: 12,
+            },
+            ignoreBrowserslistConfig: true,
+          }],
+        ],
+      }),
     ],
-    external: [ 'fs', 'util' ],
   },
 ];
