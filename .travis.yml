@@ -6,6 +6,8 @@ deploy:
   email: giles.dring@odileeds.org
   api_key:
     secure: nHGFKPy+kb2AZC4wVBm31yoJ7I34AAi6Jmg024tZ8cQRg75pof41zmgOwYB7I+BvmNsOmDG9D3nKCWwxdDq5y48DiKTEdznO+bPxmkqtTVy5u3+Ee0actME7BPCgt/ttaizK4pQTstS9ascBC44jGc48Ye+R8y9ahrU9EXwtsPt2fKypiZ6oqzgRKk91gH/gCUqp1Xj2yjlb+ayiqlZmADHKS0dqhtJ1V8ZC9WJgH/ZuZ9DiVakbmAbpkg1b0HDi4I1leU94sUtfvQCi4zB/CAFs73KEVg/6Q64Cogd9sjrXSSqQriBQku9US6bWxnI/CK0cTK4rfB70GkbOYISdj4o5zZeZWGhctMMg8am8G08RQQ90JQ34ZYSblZ5x0JOlNHYF7R4T6mTCnf+zztYUW8CGz3wavyvOmA0p23A/d0X/ijk12YDduJ3383zHbkUt0oN+0ocXzF+0vPYTKMNtOmU1ejB3fD0QpXb8jAMNiiO61XPWtGckoeycLmM4d7lLfhKWYJrH7FU6OCvxhDkykjcFxZ7fSI9abHJVw7JLVpHKx+vY6LJcgXKiZzAMzLVwOU3/kxoRi2JE/wg58icZgLms89U+fbwdKsQ7vYOa+F6PLcVOoFLIpHglDbo5qOx0moSsFFj38VKGnK0nxPbOuzUBSrCus+GfGBSHPll72sw=
+  skip_cleanup: true
   on:
     tags: true
+    repo: opnprd/geojson-cleaner
 after_script: cat ./reports/coverage/lcov.info | coveralls
