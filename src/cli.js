@@ -1,8 +1,8 @@
 import { readFile } from 'fs';
 import { promisify } from 'util';
 
-import reducePrecision from './lib/actions/reduce-precision.js';
-import transformCrs from './lib/actions/transform-crs.js';
+import reducePrecision from './actions/reduce-precision.js';
+import transformCrs from './actions/transform-crs.js';
 
 export async function processGeoJSON(inputFile) {
   const result = promisify(readFile)(inputFile)

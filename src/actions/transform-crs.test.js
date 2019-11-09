@@ -1,8 +1,8 @@
 import transformCrs from './transform-crs.js';
 
-import { featureCollection } from '../../../test/fixtures/geojson';
+import { featureCollection } from '../../test/fixtures/geojson';
 
-import { osgbFeatureCollection } from '../../../test/fixtures/geojson-with-crs.js';
+import { osgbFeatureCollection } from '../../test/fixtures/geojson-with-crs.js';
 
 it('should return the passed object if no CRS', () => {
   const data = transformCrs(featureCollection);

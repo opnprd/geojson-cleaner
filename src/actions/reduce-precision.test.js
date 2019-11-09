@@ -1,6 +1,6 @@
 import reducePrecision from './reduce-precision';
 
-import { point, polygon, featureCollection } from '../../../test/fixtures/geojson.js';
+import { point, polygon, featureCollection } from '../../test/fixtures/geojson.js';
 
 it('should parse GeoJSON Points', () => {
   const reduced = reducePrecision(point);

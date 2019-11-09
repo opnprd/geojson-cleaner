@@ -3,7 +3,7 @@
 This small utility cleans geojson format files by applying the following actions:
 
 - Convert non-WGS84 CRS into WGS84 ([EPSG:4326](https://epsg.io/4326)).
-  At present, this is only implemented for OSGB 1937 ([EPSG:27700](https://epsg.io/27700)).
+  At present, this is only implemented for OSGB 1936 ([EPSG:27700](https://epsg.io/27700)).
 - Shorten coordinates to 5 decimal places, which
   provides accuracy of [around 1.1m at the equator](https://www.wolframalpha.com/input/?i=1e-5+degree)
 

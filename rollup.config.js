@@ -58,5 +58,6 @@ export default [
         ],
       }),
     ],
+    external: [ 'fs', 'util' ],
   },
 ];
