@@ -1,19 +1,12 @@
 import { readFile } from 'fs';
 import { promisify } from 'util';
 
-import reducePrecision from './actions/reduce-precision.js';
-import transformCrs from './actions/transform-crs.js';
+export function handleErrors(err) {
+  console.error(err.message);
+  process.exit(1);
+}
 
-export async function processGeoJSON(inputFile) {
-  const result = promisify(readFile)(inputFile)
-    .then(JSON.parse)
-    .then(transformCrs)
-    .then(reducePrecision)
-    .then(JSON.stringify)
-    .catch((err) => {
-      console.error(err.message);
-      process.exit(1);
-    });
-  return result;
+export async function loadFile(inputFile) {
+  return promisify(readFile)(inputFile, 'utf-8');
 }
 
