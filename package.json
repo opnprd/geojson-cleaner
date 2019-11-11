@@ -16,11 +16,13 @@
   "author": "Giles Dring <giles.dring@odileeds.org>",
   "repository": "git@github.com:opnprd/geojson-cleaner.git",
   "license": "ISC",
+  "main": "dist/lib/index.js",
   "bin": {
     "geojson-cleaner": "bin/cli.js"
   },
   "files": [
-    "dist/cli/index.js"
+    "dist/cli/index.js",
+    "dist/lib/index.js"
   ],
   "directories": {
     "test": "test"

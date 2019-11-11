@@ -38,6 +38,28 @@ export default [
     ],
   },
   {
+    input: 'src/lib.js',
+    output: [
+      { file: `${outputDir}/lib/index.js`, format: 'cjs' },
+    ],
+    plugins: [
+      ...basePlugins,
+      babel({
+        configFile: false,
+        exclude: 'node_modules/**',
+        presets: [
+          [ '@babel/preset-env', {
+            modules: false,
+            targets: {
+              node: 12,
+            },
+            ignoreBrowserslistConfig: true,
+          }],
+        ],
+      }),
+    ],
+    external: [],
+  },  {
     input: 'src/cli.js',
     output: [
       { file: `${outputDir}/cli/index.js`, format: 'cjs' },
