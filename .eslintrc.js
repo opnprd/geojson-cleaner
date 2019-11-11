@@ -16,4 +16,12 @@ module.exports = {
     'comma-dangle': ['warn', 'always-multiline'],
     'quote-props': ['warn', 'as-needed'],
   },
+  overrides: [
+    {
+      files: ['src/main.js'],
+      env: {
+        browser: true,
+      },
+    },
+  ],
 };

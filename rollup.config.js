@@ -4,7 +4,6 @@ import resolve from 'rollup-plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import json from 'rollup-plugin-json';
 
-const entrypoint = 'main';
 const outputDir = 'dist';
 const name = 'geojson-cleaner';
 
@@ -16,10 +15,10 @@ const basePlugins = [
 
 export default [
   {
-    input: `src/${entrypoint}.js`,
+    input: 'src/main.js',
     output: [
-      { file: `${outputDir}/${name}.js`, format: 'iife' },
-      { file: `${outputDir}/${name}.min.js`, format: 'iife' },
+      { file: `docs/${name}.js`, format: 'iife', name: 'geojsonCleaner' },
+      { file: `docs/${name}.min.js`, format: 'iife', name: 'geojsonCleaner' },
     ],
     plugins: [
       ...basePlugins,

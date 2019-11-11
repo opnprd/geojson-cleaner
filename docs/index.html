@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GeoJSON Cleaner</title>
+  <link rel="stylesheet" href="style.css">
+  <script async src="geojson-cleaner.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>GeoJSON Cleaner</h1>
+    <button onClick="geojsonCleaner.cleanTextarea()">Clean Me!</button>
+    <button onClick="geojsonCleaner.preFill()">Load Example</button>    
+  </header>
+  <section role="main">
+    <textarea id="input" rows="20" class="mono"></textarea>
+    <pre><section id="result" class="mono"></section></pre>
+  </section>
+  <script>
+    window.addEventListener('load', () => {
+      geojsonCleaner.preFill();
+    })
+  </script>
+</body>
+</html>
