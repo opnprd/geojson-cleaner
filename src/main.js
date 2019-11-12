@@ -15,6 +15,13 @@ function setResult(data) {
   document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
 }
 
+export function setDownloadLink(data) {
+  const text = JSON.stringify(data);
+  const file = new File([text], 'result.json', { type: 'application/json' });
+  const uri = URL.createObjectURL(file);
+  document.getElementById('download-link').href = uri;
+}
+
 export function cleanTextarea() {
   const input = getInput();
   const actions = [ transformCrs, reducePrecision ];
@@ -22,6 +29,7 @@ export function cleanTextarea() {
     return curr(acc);
   }, input);
   setResult(result);
+  setDownloadLink(result);
 }
 
 export function preFill() {

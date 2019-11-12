@@ -6625,6 +6625,14 @@ var geojsonCleaner = (function (exports) {
     document.getElementById('result').innerHTML = JSON.stringify(data, null, 2);
   }
 
+  function setDownloadLink(data) {
+    var text = JSON.stringify(data);
+    var file = new File([text], 'result.json', {
+      type: 'application/json'
+    });
+    var uri = URL.createObjectURL(file);
+    document.getElementById('download-link').href = uri;
+  }
   function cleanTextarea() {
     var input = getInput();
     var actions = [testForCrs, reducePrecision];
@@ -6632,6 +6640,7 @@ var geojsonCleaner = (function (exports) {
       return curr(acc);
     }, input);
     setResult(result);
+    setDownloadLink(result);
   }
   function preFill() {
     setInput(osgbFeatureCollection);
@@ -6639,6 +6648,7 @@ var geojsonCleaner = (function (exports) {
 
   exports.cleanTextarea = cleanTextarea;
   exports.preFill = preFill;
+  exports.setDownloadLink = setDownloadLink;
 
   return exports;
 
