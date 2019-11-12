@@ -1,13 +1,16 @@
 body {
   font-size: 12pt;
   font-family: 'Alfa Slab One', cursive;
-  & > header {
+  > header {
     text-align: center;
     background: Orange;
     padding-bottom: 1em;
     padding-left: 1em;
     padding-right: 1em;
     color: white;
+    > h1 {
+      padding-top: 1em;
+    }
   }
 }
 
@@ -37,4 +40,6 @@ h1 {
 
 section[role="main"] {
   @extend %central;
+  padding: 1em;
+  box-sizing: border-box;
 }
